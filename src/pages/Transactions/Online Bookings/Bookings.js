@@ -8,7 +8,7 @@ import { base_url } from "../../../variables";
 import TableFooter from "../../../App/components/TableFooter";
 import fetchPost from "../../../App/components/fetchPost";
 
-const Consultations = () => {
+const Bookings = () => {
   const match = useRouteMatch();
   const [isSubmitting, setSubmitting] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -26,7 +26,7 @@ const Consultations = () => {
     },
     status,
     refetch
-  } = useFetch(`${base_url}/admin/consultation?page=${currentPage}&limit=${currentLimit}`);
+  } = useFetch(`${base_url}/admin/booking?page=${currentPage}&limit=${currentLimit}`);
 
   function convert_date(date) {
     return `${new Date(date).getDate()}/${new Date(date).getMonth()}/${new Date(date).getFullYear()}`;
@@ -87,7 +87,7 @@ const Consultations = () => {
       });
       if (!result.isConfirmed) return;
       setSubmitting(true);
-      await fetchPost("/admin/consultation/action", { id, action });
+      await fetchPost("/admin/booking/action", { id, action });
       setSubmitting(false);
       refetch();
     }
@@ -99,7 +99,7 @@ const Consultations = () => {
       <Col>
         <Card>
           <Card.Header>
-            <Card.Title as="h5">Online Consultations List</Card.Title>
+            <Card.Title as="h5">Online Bookings List</Card.Title>
           </Card.Header>
           <Card.Body className="pt-3">
 
@@ -141,7 +141,7 @@ const Consultations = () => {
                               <th className="align-middle" scope="row">{pagingCounter + i}</th>
                               <td className="align-middle">{transaction.user.name}</td>
                               <td className="align-middle">{transaction.vendor.name}</td>
-                              <td className="align-middle">{transaction.pets ? transaction.pets.name : "None"}</td>
+                              <td className="align-middle">{transaction.pets.name}</td>
                               <td className="align-middle">{transaction.created_at ? convert_date(transaction.created_at) : "None"}</td>
                               <td className="align-middle">{translate_transaction_status_code(transaction.status)}</td>
                               <td className="text-center">
@@ -191,4 +191,4 @@ const Consultations = () => {
   );
 };
 
-export default Consultations;
+export default Bookings;

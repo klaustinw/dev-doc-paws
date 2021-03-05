@@ -29,6 +29,13 @@ export default {
                     icon: 'feather icon-file-text',
                 },
                 {
+                    id: 'online-bookings',
+                    title: 'Online Bookings',
+                    type: 'item',
+                    url: '/transactions/online-bookings',
+                    icon: 'feather icon-book',
+                },
+                {
                     id: 'consultations',
                     title: 'Online Consultations',
                     type: 'item',

@@ -110,7 +110,7 @@ const VendorDetail = (props) => {
                       </Nav>
                     </Col>
                     <Col sm={9}>
-                      <Tab.Content>
+                      <Tab.Content className="px-0 py-0">
                         <Tab.Pane eventKey="home">
                           <Main vendor={vendor} />
                         </Tab.Pane>

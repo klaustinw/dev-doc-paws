@@ -12,6 +12,9 @@ const DashboardDefault = React.lazy(() => import('./pages/Dashboard/Default'));
 const Consultations = React.lazy(() => import('./pages/Transactions/Consultations/Consultations'));
 const ConsultationDetail = React.lazy(() => import('./pages/Transactions/Consultations/ConsultationDetail'));
 
+const OnlineBookings = React.lazy(() => import('./pages/Transactions/Online Bookings/Bookings'));
+const OnlineBookingDetail = React.lazy(() => import('./pages/Transactions/Online Bookings/BookingDetail'));
+
 const Homecares = React.lazy(() => import('./pages/Transactions/Homecares/Homecares'));
 const HomecareDetail = React.lazy(() => import('./pages/Transactions/Homecares/HomecareDetail'));
 
@@ -37,9 +40,11 @@ const EditMedicalTreatment = React.lazy(() => import("./pages/Masters/MedicalTre
 const routes = [
     { path: '/dashboard/default', exact: true, name: 'Default', component: DashboardDefault },
     { path: '/transactions/online-consultations', exact: true, name: 'Consultations', component: Consultations },
-    { path: '/transactions/online-consultations/detail/:id',exact: true, name: 'Consultation Detail', component: ConsultationDetail },
+    { path: '/transactions/online-consultations/detail/:id', exact: true, name: 'Consultation Detail', component: ConsultationDetail },
+    { path: '/transactions/online-bookings', exact: true, name: 'Online Bookings', component: OnlineBookings },
+    { path: '/transactions/online-bookings/detail/:id', exact: true, name: 'Online Booking Detail', component: OnlineBookingDetail },
     { path: '/transactions/homecares', exact: true, name: 'Homecares', component: Homecares },
-    { path: '/transactions/homecares/detail/:id',exact: true, name: 'Homecare Detail', component: HomecareDetail },
+    { path: '/transactions/homecares/detail/:id', exact: true, name: 'Homecare Detail', component: HomecareDetail },
     { path: '/transactions/articles', exact: true, name: 'Articles', component: Articles },
     { path: '/transactions/articles/create', exact: true, name: 'Create New Article', component: NewArticle },
     { path: '/transactions/articles/edit', exact: true, name: 'Edit Article', component: EditArticle },

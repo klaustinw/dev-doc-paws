@@ -11,10 +11,10 @@ import Pet from "./Menu/Pet";
 import User from "./Menu/User";
 import Vendor from "./Menu/Vendor";
 
-const ConsultationDetail = (props) => {
+const BookingDetail = (props) => {
   const { id } = useParams();
   const tableRefetch = props.location.tableRefetch;
-  const { data, status, refetch } = useFetch(base_url + "/admin/consultation/detail?id=" + id);
+  const { data, status, refetch } = useFetch(base_url + "/admin/booking/detail?id=" + id);
 
   const handleButton = async (action) => {
     const result = await Swal.fire({
@@ -24,7 +24,7 @@ const ConsultationDetail = (props) => {
       showCancelButton: true
     });
     if (!result.isConfirmed) return;
-    await fetchPost("/admin/consultation/action", { id, action: action });
+    await fetchPost("/admin/booking/action", { id, action: action });
     refetch();
     if (tableRefetch) tableRefetch();
   };
@@ -34,7 +34,7 @@ const ConsultationDetail = (props) => {
       <Col>
         <Card>
           <Card.Header>
-            <h5 as="h5">Online Consultation Detail</h5>
+            <h5 as="h5">Online Booking Detail</h5>
             <Button
               size="sm"
               variant="danger"
@@ -76,7 +76,7 @@ const ConsultationDetail = (props) => {
                     status == "success"
                       ? <Tab.Content className="px-0 py-0">
                         <Tab.Pane eventKey="home">
-                          <Main consultation={data} />
+                          <Main booking={data} />
                         </Tab.Pane>
                         <Tab.Pane eventKey="proofs">
                           <PaymentProof data={data.paymentProof} />
@@ -105,4 +105,4 @@ const ConsultationDetail = (props) => {
   );
 };
 
-export default ConsultationDetail;
+export default BookingDetail;

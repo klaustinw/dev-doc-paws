@@ -42,6 +42,13 @@ class NavItem extends Component {
                     );
                     break;
 
+                case "/transactions/online-bookings":
+                    subContent = (<NavLink to={this.props.item.url} className="nav-link" exact={true} target={itemTarget} isActive={(match, location) => {
+                        if (!match) { const base = location.pathname.split("/"); if (base[2] == "online-bookings") return true; else return false } else return true;
+                    }}><NavIcon items={this.props.item} />{itemTitle}<NavBadge layout={this.props.layout} items={this.props.item} /></NavLink>
+                    );
+                    break;
+
                 case "/transactions/articles":
                     subContent = (<NavLink to={this.props.item.url} className="nav-link" exact={true} target={itemTarget} isActive={(match, location) => {
                         if (!match) { const base = location.pathname.split("/"); if (base[2] == "articles") return true; else return false } else return true;

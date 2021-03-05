@@ -11,12 +11,52 @@ import config from './config';
 
 const store = createStore(reducer);
 
+class ErrorBoundary extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { hasError: false };
+    }
+
+    static getDerivedStateFromError(error) {
+        // Update state so the next render will show the fallback UI.
+        return { hasError: true };
+    }
+
+    // componentDidCatch(error, errorInfo) {
+    //     // You can also log the error to an error reporting service
+    //     logErrorToMyService(error, errorInfo);
+    // }
+
+    render() {
+        if (this.state.hasError) {
+            // You can render any custom fallback UI
+            return (
+                <div style={{ 
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    textAlign: "center",
+                    minHeight: "100vh",
+                 }}>
+                    <h3>An Error has occurred</h3>
+                    <a href="/">Go back home</a>
+                </div>
+            );
+        }
+
+        return this.props.children;
+    }
+}
+
 const app = (
-        <Provider store={store}>
-            <BrowserRouter basename={config.basename}>
+    <Provider store={store}>
+        <BrowserRouter basename={config.basename}>
+            <ErrorBoundary>
                 <App />
-            </BrowserRouter>
-        </Provider>
+            </ErrorBoundary>
+        </BrowserRouter>
+    </Provider>
 );
 
 ReactDOM.render(app, document.getElementById('root'));
