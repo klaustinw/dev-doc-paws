@@ -141,7 +141,7 @@ const Bookings = () => {
                               <th className="align-middle" scope="row">{pagingCounter + i}</th>
                               <td className="align-middle">{transaction.user.name}</td>
                               <td className="align-middle">{transaction.vendor.name}</td>
-                              <td className="align-middle">{transaction.pets ? transaction.pets.name : "none"}</td>
+                              <td className="align-middle">{transaction.pets ? transaction.pets.name : "None"}</td>
                               <td className="align-middle">{transaction.created_at ? convert_date(transaction.created_at) : "None"}</td>
                               <td className="align-middle">{translate_transaction_status_code(transaction.status)}</td>
                               <td className="text-center">
